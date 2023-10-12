@@ -7,6 +7,7 @@ function App() {
   const [minutes, setMinutes] = useState(0);
 
   const timer = useRef();
+
   useEffect(() => {
     if (seconds > 59) {
       setMinutes((prev) => prev + 1);
@@ -20,9 +21,6 @@ function App() {
   }, [seconds, minutes]);
 
   function updateTime() {
-    console.log(timer.current);
-    console.log(seconds, minutes);
-
     if (!timer.current) {
       timer.current = setInterval(() => {
         setSeconds((seconds) => seconds + 1);
@@ -39,7 +37,6 @@ function App() {
   }
 
   function resetTimer() {
-    console.log(timer.current);
     clearInterval(timer.current);
     timer.current = 0;
     setSeconds(0);
